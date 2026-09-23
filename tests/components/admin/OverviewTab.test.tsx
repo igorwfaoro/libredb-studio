@@ -423,7 +423,10 @@ describe("OverviewTab", () => {
       const auditLink = queryByTestId("overview-audit-link");
       expect(auditLink).not.toBeNull();
       expect(auditLink?.getAttribute("href")).toBe(adminSectionPath("audit"));
-      expect(queryByText("No application-recorded events in this preview.")).not.toBeNull();
+      expect(queryByTestId("overview-recent-activity-empty")).not.toBeNull();
+      expect(
+        queryByText("No recent activity here. The Audit tab explains what this feed does not capture."),
+      ).not.toBeNull();
       expect(queryByText("No recent activity.")).toBeNull();
     });
   });

@@ -1005,6 +1005,8 @@ function AnalyticsSection({
               <Clock className="h-4 w-4 text-brand" />
               Recent Activity
             </h3>
+            {/* Unconditional: the preview cannot show proxy-recorded boundary denials, so the
+                Audit tab's scope disclosure must stay one click away in every feed state. */}
             <Link
               href={adminSectionPath("audit")}
               data-testid="overview-audit-link"
@@ -1015,8 +1017,11 @@ function AnalyticsSection({
             </Link>
           </div>
           {activityFeed.length === 0 ? (
-            <div className="flex items-center justify-center py-8 text-sm text-fg-subtle">
-              No application-recorded events in this preview.
+            <div
+              data-testid="overview-recent-activity-empty"
+              className="flex items-center justify-center py-8 text-sm text-fg-subtle"
+            >
+              No recent activity here. The Audit tab explains what this feed does not capture.
             </div>
           ) : (
             <div className="max-h-[260px] overflow-y-auto editor-scrollbar space-y-1">
